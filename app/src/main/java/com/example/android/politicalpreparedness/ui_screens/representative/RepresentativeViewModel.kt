@@ -29,11 +29,11 @@ class RepresentativeViewModel : ViewModel() {
 
      */
     fun getCombined() {
-        val (offices, officials) = getRepresentativesDeferred.await()
-        _representatives.value = offices.flatMap
-        { office ->
-            office.getRepresentatives(officials)
-        }
+//        val (offices, officials) = getRepresentativesDeferred.await()
+//        _representatives.value = offices.flatMap
+//        { office ->
+//            office.getRepresentatives(officials)
+//        }
     }
 
     //TODO: Create function get address from geo location

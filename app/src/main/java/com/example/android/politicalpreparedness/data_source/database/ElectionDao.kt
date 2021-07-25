@@ -14,11 +14,11 @@ interface ElectionDao {
 
     //TODO: Add select all election query
     @Query("SELECT * FROM election_table")
-    fun getElection(election: Election): List<Election>
+    fun getAllElections(): List<Election>
 
     //TODO: Add select single election query
     @Query("SELECT * FROM election_table where id = :id LIMIT 1")
-    fun getElection(id: Int): Election
+    fun getElectionBy(id: Int): Election
 
     //TODO: Add delete query
     @Query("DELETE FROM election_table where id = :id")
