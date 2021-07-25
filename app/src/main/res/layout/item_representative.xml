@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="representative"
+            type="com.example.android.politicalpreparedness.ui_screens.representative.model.Representative" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin">
+
+        <ImageView
+            android:id="@+id/representativePhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/description_representative_image"
+            android:src="@drawable/ic_profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/representativeTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/roboto"
+            android:letterSpacing="0.15"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/representativePhoto"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="President of the United States" />
+
+        <TextView
+            android:id="@+id/representativeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:letterSpacing="0.1"
+            app:layout_constraintStart_toStartOf="@+id/representativeTitle"
+            app:layout_constraintTop_toBottomOf="@+id/representativeTitle"
+            tools:text="Uzair" />
+
+        <TextView
+            android:id="@+id/representativeParty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/representativeName"
+            app:layout_constraintTop_toBottomOf="@+id/representativeName"
+            tools:text="Democratic Party" />
+
+        <ImageView
+            android:id="@+id/wwwIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@string/description_representative_web_link"
+            android:src="@drawable/ic_www"
+            app:layout_constraintBottom_toBottomOf="@+id/facebookIcon"
+            app:layout_constraintEnd_toStartOf="@+id/facebookIcon"
+            app:layout_constraintTop_toTopOf="@+id/facebookIcon" />
+
+        <ImageView
+            android:id="@+id/facebookIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@string/description_representative_facebook_link"
+            android:src="@drawable/ic_facebook"
+            app:layout_constraintBottom_toBottomOf="@+id/twitterIcon"
+            app:layout_constraintEnd_toStartOf="@+id/twitterIcon"
+            app:layout_constraintTop_toTopOf="@+id/twitterIcon" />
+
+        <ImageView
+            android:id="@+id/twitterIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@string/description_representative_twitter_link"
+            android:src="@drawable/ic_twitter"
+            app:layout_constraintBottom_toBottomOf="@+id/representativeParty"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/representativeName" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

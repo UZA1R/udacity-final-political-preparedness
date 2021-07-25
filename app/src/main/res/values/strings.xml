@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Political Preparedness</string>
+    <string name="image_description_home_screen_logo">Home Screen Logo</string>
+    <string name="button_upcoming_elections">Upcoming Elections</string>
+    <string name="button_find_my_representative">Find My Representative</string>
+    <string name="button_follow_election">Follow Election</string>
+    <string name="button_use_my_location">Use my location</string>
+    <string name="title_my_representatives">My Representatives</string>
+    <string name="title_representative_search">Representative Search</string>
+    <string name="description_representative_web_link">Representative Web Link</string>
+    <string name="description_representative_twitter_link">Representative Twitter Link</string>
+    <string name="description_representative_facebook_link">Representative Facebook Link</string>
+    <string name="description_representative_image">Representative Image</string>
+
+    <!-- TODO: Add necessary string values -->
+
+</resources>
