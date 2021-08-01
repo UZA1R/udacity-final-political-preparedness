@@ -59,7 +59,7 @@ class ElectionsFragment : Fragment() {
                 )
             )
         })
-        binding.recyclerViewSavedElections.mainRecyclerView.adapter = savedElectionsAdapter
+        binding.recyclerViewSavedElections.adapter = savedElectionsAdapter
 
         viewModel.savedElections.observe(viewLifecycleOwner) {
             when (it) {
@@ -90,7 +90,7 @@ class ElectionsFragment : Fragment() {
                 )
             )
         })
-        binding.recyclerViewUpcomingElections.mainRecyclerView.adapter = upcomingElectionsAdapter
+        binding.recyclerViewUpcomingElections.adapter = upcomingElectionsAdapter
 
         //TODO: Populate recycler adapters
         viewModel.upcomingElections.observe(viewLifecycleOwner) {

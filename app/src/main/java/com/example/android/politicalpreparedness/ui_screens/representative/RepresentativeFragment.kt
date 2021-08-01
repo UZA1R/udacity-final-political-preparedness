@@ -14,7 +14,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -72,7 +71,7 @@ class RepresentativeFragment : Fragment() {
 
         //TODO: Define and assign Representative adapter
         val adapter = RepresentativeListAdapter()
-        binding.recyclerViewRepresentatives.mainRecyclerView.adapter = adapter
+        binding.recyclerViewRepresentatives.adapter = adapter
 
         //TODO: Populate Representative adapter
         viewModel.representatives.observe(viewLifecycleOwner) {

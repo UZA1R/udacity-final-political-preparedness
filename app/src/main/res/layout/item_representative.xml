@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/representativePhoto"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/user_image_dimen"
+            android:layout_height="@dimen/user_image_dimen"
             android:contentDescription="@string/description_representative_image"
             android:src="@drawable/ic_profile"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -34,7 +34,7 @@
             android:fontFamily="@font/roboto"
             android:letterSpacing="0.15"
             android:text="@{representative.office.name}"
-            android:textSize="16sp"
+            android:textSize="@dimen/item_title_text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/representativePhoto"

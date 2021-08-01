@@ -18,11 +18,11 @@
         tools:context="com.example.android.politicalpreparedness.ui_screens.MainActivity">
 
         <!-- TODO: Add Upcoming Election Recycler and Header -->
-        <include
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewUpcomingElections"
-            layout="@layout/main_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/recyclerViewSavedElections"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -54,11 +54,11 @@
             app:layout_constraintTop_toBottomOf="@+id/recyclerViewUpcomingElections" />
 
         <!-- TODO: Add Saved Election Recycler and Header -->
-        <include
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewSavedElections"
-            layout="@layout/main_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

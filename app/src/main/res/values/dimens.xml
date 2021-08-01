@@ -4,4 +4,6 @@
     <dimen name="default_padding">8dp</dimen>
     <dimen name="default_margin">16dp</dimen>
     <dimen name="default_item_margin">6dp</dimen>
+    <dimen name="user_image_dimen">50dp</dimen>
+    <dimen name="item_title_text_size">16sp</dimen>
 </resources>
