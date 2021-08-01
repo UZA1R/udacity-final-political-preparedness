@@ -14,30 +14,57 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.data_source.network.models.Channel
 import com.example.android.politicalpreparedness.databinding.ItemRepresentativeBinding
+import com.example.android.politicalpreparedness.ui_screens.common_view_holder.HeaderViewHolder
+import com.example.android.politicalpreparedness.ui_screens.common_view_holder.ITEM_HEADER
 import com.example.android.politicalpreparedness.ui_screens.representative.model.Representative
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-private const val ITEM_VIEW_TYPE_HEADER = 0
-private const val ITEM_VIEW_TYPE_ITEM = 1
+private const val ITEM_REPRESENTATIVE = 2
 
 class RepresentativeListAdapter :
-    ListAdapter<Representative, RepresentativeViewHolder>(RepresentativeDiffCallback()) {
+    ListAdapter<DataItem, RecyclerView.ViewHolder>(RepresentativeDiffCallback()) {
+    private val adapterScope = CoroutineScope(Dispatchers.Default)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepresentativeViewHolder {
-        return RepresentativeViewHolder.from(parent)
+    override fun getItemViewType(position: Int) = when (getItem(position)) {
+        is DataItem.Header -> ITEM_HEADER
+        is DataItem.RepresentativeItem -> ITEM_REPRESENTATIVE
     }
 
-    override fun onBindViewHolder(holder: RepresentativeViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
-    }
-
-    /*override fun getItemViewType(position: Int): Int {
-        return when (getItem(position)) {
-            is DataItem.Header -> ITEM_VIEW_TYPE_HEADER
-            is DataItem.SleepNightItem -> ITEM_VIEW_TYPE_ITEM
-            else -> 0
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            ITEM_HEADER -> HeaderViewHolder.from(parent)
+            ITEM_REPRESENTATIVE -> RepresentativeViewHolder.from(parent)
+            else -> throw ClassCastException("Unknown viewType $viewType")
         }
-    }*/
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is RepresentativeViewHolder -> {
+                val item = getItem(position) as DataItem.RepresentativeItem
+                holder.bind(item.representative)
+            }
+
+            is HeaderViewHolder -> {
+                val headerTitle = getItem(position) as DataItem.Header
+                holder.bind(headerTitle.title)
+            }
+        }
+    }
+
+    fun addHeaderAndSubmitList(headerTitle: String, list: List<Representative>) {
+        adapterScope.launch {
+            val items =
+                listOf(DataItem.Header(headerTitle)) + list.map { DataItem.RepresentativeItem(it) }
+
+            withContext(Dispatchers.Main) {
+                submitList(items)
+            }
+        }
+    }
 }
 
 class RepresentativeViewHolder(private val binding: ItemRepresentativeBinding) :
@@ -47,7 +74,7 @@ class RepresentativeViewHolder(private val binding: ItemRepresentativeBinding) :
         fun from(parent: ViewGroup) = RepresentativeViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                android.R.layout.simple_list_item_1, parent,
+                R.layout.item_representative, parent,
                 false
             )
         )
@@ -55,12 +82,16 @@ class RepresentativeViewHolder(private val binding: ItemRepresentativeBinding) :
 
     fun bind(item: Representative) {
         binding.representative = item
-        binding.representativePhoto.setImageResource(R.drawable.ic_profile)
 
         //TODO: Show social links ** Hint: Use provided helper methods
-//        showSocialLinks()
+        item.official.channels?.let {
+            showSocialLinks(item.official.channels)
+        }
 
         //TODO: Show www link ** Hint: Use provided helper methods
+        item.official.urls?.let {
+            showWWWLinks(item.official.urls)
+        }
 
         binding.executePendingBindings()
     }
@@ -105,28 +136,23 @@ class RepresentativeViewHolder(private val binding: ItemRepresentativeBinding) :
     }
 }
 
-//TODO: Create RepresentativeDiffCallback
-class RepresentativeDiffCallback : DiffUtil.ItemCallback<Representative>() {
-    override fun areItemsTheSame(oldItem: Representative, newItem: Representative): Boolean {
-        return oldItem.official.name == newItem.official.name
+//TODO: Create ElectionDiffCallback
+class RepresentativeDiffCallback : DiffUtil.ItemCallback<DataItem>() {
+    override fun areItemsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Representative, newItem: Representative): Boolean {
+    override fun areContentsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
         return oldItem == newItem
     }
 }
 
-//TODO: Create RepresentativeListener
-class OnClickListener(val clickListener: (representative: Representative) -> Unit) {
-    fun onClick(representative: Representative) = clickListener(representative)
-}
-
 sealed class DataItem {
-    data class SleepNightItem(val representative: Representative) : DataItem() {
-        override val id = representative.official.name
+    data class RepresentativeItem(val representative: Representative) : DataItem() {
+        override val id = representative.office.division.id
     }
 
-    object Header : DataItem() {
+    data class Header(val title: String) : DataItem() {
         override val id = ""
     }
 

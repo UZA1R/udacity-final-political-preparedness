@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="representative"
             type="com.example.android.politicalpreparedness.ui_screens.representative.model.Representative" />
@@ -12,17 +13,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margin">
+        android:layout_margin="@dimen/default_item_margin">
 
         <ImageView
             android:id="@+id/representativePhoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:contentDescription="@string/description_representative_image"
             android:src="@drawable/ic_profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:profileImage="@{representative.official.photoUrl}" />
 
         <TextView
             android:id="@+id/representativeTitle"
@@ -31,6 +33,7 @@
             android:layout_marginStart="5dp"
             android:fontFamily="@font/roboto"
             android:letterSpacing="0.15"
+            android:text="@{representative.office.name}"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,6 +47,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
             android:letterSpacing="0.1"
+            android:text="@{representative.official.name}"
             app:layout_constraintStart_toStartOf="@+id/representativeTitle"
             app:layout_constraintTop_toBottomOf="@+id/representativeTitle"
             tools:text="Uzair" />
@@ -52,6 +56,7 @@
             android:id="@+id/representativeParty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{representative.official.party}"
             app:layout_constraintStart_toStartOf="@+id/representativeName"
             app:layout_constraintTop_toBottomOf="@+id/representativeName"
             tools:text="Democratic Party" />

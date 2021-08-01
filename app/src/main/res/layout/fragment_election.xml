@@ -18,8 +18,9 @@
         tools:context="com.example.android.politicalpreparedness.ui_screens.MainActivity">
 
         <!-- TODO: Add Upcoming Election Recycler and Header -->
-        <androidx.recyclerview.widget.RecyclerView
+        <include
             android:id="@+id/recyclerViewUpcomingElections"
+            layout="@layout/main_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/recyclerViewSavedElections"
@@ -28,9 +29,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ProgressBar
+            android:id="@+id/upcomingElectionsProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/recyclerViewUpcomingElections"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/savedElectionsProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewUpcomingElections" />
+
         <!-- TODO: Add Saved Election Recycler and Header -->
-        <androidx.recyclerview.widget.RecyclerView
+        <include
             android:id="@+id/recyclerViewSavedElections"
+            layout="@layout/main_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"

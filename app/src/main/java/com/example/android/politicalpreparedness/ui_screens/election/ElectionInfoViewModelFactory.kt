@@ -9,17 +9,18 @@ import com.example.android.politicalpreparedness.data_source.network.CivicsApiSe
 import com.example.android.politicalpreparedness.repository.ElectionsRepositoryImplementation
 import kotlinx.coroutines.Dispatchers
 
-//TODO: Create Factory to generate ElectionViewModel with provided election datasource
-class ElectionsViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
+//TODO: Create Factory to generate VoterInfoViewModel with provided election datasource
+class ElectionInfoViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ElectionsViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(ElectionInfoViewModel::class.java)) {
             val dispatchers = Dispatchers.IO
 
             val electionDao = ElectionDatabase.getInstance(context).electionDao
             val civicsApiService: CivicsApiService = CivicsApi.retrofitService
             val electionsRepository =
                 ElectionsRepositoryImplementation(electionDao, civicsApiService)
-            return ElectionsViewModel(dispatchers, electionsRepository) as T
+
+            return ElectionInfoViewModel(dispatchers, electionsRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
