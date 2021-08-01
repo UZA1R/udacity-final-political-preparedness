@@ -21,9 +21,10 @@ class RepresentativeViewModel(
     //TODO: Establish live data for representatives and address
     private val _representatives = MutableLiveData<Result<List<Representative>>>()
     val representatives = _representatives
+    var address = Address("", "", "", "", "")
 
     //TODO: Create function to fetch representatives from API from a provided address
-    fun getAllRepresentatives(address: Address) {
+    fun getAllRepresentatives() {
         viewModelScope.launch(dispatcher) {
             try {
                 _representatives.postValue(Result.Fetching)

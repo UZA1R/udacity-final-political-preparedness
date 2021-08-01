@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -24,7 +25,6 @@ import com.example.android.politicalpreparedness.databinding.FragmentRepresentat
 import com.example.android.politicalpreparedness.ui_screens.representative.adapter.RepresentativeListAdapter
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import java.io.IOException
 import java.util.*
 
 private const val TAG = "RepresentativeFragment"
@@ -66,12 +66,13 @@ class RepresentativeFragment : Fragment() {
     ): View {
         binding = FragmentRepresentativeBinding.inflate(inflater)
         binding.lifecycleOwner = this
+        binding.representativeViewModel = viewModel
 
         //TODO: Establish bindings
 
         //TODO: Define and assign Representative adapter
         val adapter = RepresentativeListAdapter()
-        binding.list.adapter = adapter
+        binding.recyclerViewRepresentatives.mainRecyclerView.adapter = adapter
 
         //TODO: Populate Representative adapter
         viewModel.representatives.observe(viewLifecycleOwner) {
@@ -87,6 +88,7 @@ class RepresentativeFragment : Fragment() {
                         it.data
                     )
 
+                    binding.layout.transitionToEnd()
                     binding.executePendingBindings()
                 }
                 is Result.Error -> {
@@ -112,7 +114,7 @@ class RepresentativeFragment : Fragment() {
                     address = geoCodeLocation(field)
 
                     if (address != null) {
-                        binding.address = address
+                        updateAddress(address)
                         break
                     }
                 }
@@ -121,7 +123,7 @@ class RepresentativeFragment : Fragment() {
             if (address == null) {
                 showInvalidAddressError()
             } else {
-                viewModel.getAllRepresentatives(binding.address!!)
+                getAllRepresentatives()
             }
         }
         binding.buttonUseMyLocation.setOnClickListener {
@@ -152,12 +154,22 @@ class RepresentativeFragment : Fragment() {
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location: Location? ->
                 location?.let {
-                    binding.address = geoCodeLocation(it)
+                    updateAddress(geoCodeLocation(it))
 
                     //Get all the representatives after getting the location result
-                    viewModel.getAllRepresentatives(binding.address!!)
+                    getAllRepresentatives()
                 }
             }
+    }
+
+    private fun updateAddress(address: Address) {
+        viewModel.address = address
+        binding.representativeViewModel = viewModel
+        binding.executePendingBindings()
+    }
+
+    private fun getAllRepresentatives() {
+        viewModel.getAllRepresentatives()
     }
 
     //TODO: The geoCodeLocation method is a helper function to change the lat/long location to a human readable street address
@@ -190,7 +202,7 @@ class RepresentativeFragment : Fragment() {
                     )
                 }
                 .first()
-        } catch (exception: IOException) {
+        } catch (exception: Exception) {
             showInvalidAddressError()
             Log.e(TAG, exception.message, exception)
         }

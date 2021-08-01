@@ -9,101 +9,87 @@
             name="representativeViewModel"
             type="com.example.android.politicalpreparedness.ui_screens.representative.RepresentativeViewModel" />
 
-        <variable
-            name="address"
-            type="com.example.android.politicalpreparedness.data_source.network.models.Address" />
-
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/default_margin"
-        app:layoutDescription="@xml/fragment_representative_motion_scene">
+        app:layoutDescription="@xml/fragment_representative_scene">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/searchLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <!-- TODO: Add visual styling and content -->
+        <TextView
+            android:id="@+id/search_title"
+            style="@style/Header"
+            android:text="@string/title_representative_search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- TODO: Add visual styling and content -->
-            <TextView
-                android:id="@+id/search_title"
-                style="@style/Header"
-                android:text="@string/title_representative_search"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/addressLine1"
+            style="@style/AddressStyle"
+            android:hint="@string/address_line1"
+            android:text="@={representativeViewModel.address.line1}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/search_title"
+            app:layout_constraintTop_toBottomOf="@+id/search_title" />
 
-            <EditText
-                android:id="@+id/addressLine1"
-                style="@style/AddressStyle"
-                android:hint="@string/address_line1"
-                android:text="@={address.line1}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/search_title"
-                app:layout_constraintTop_toBottomOf="@+id/search_title" />
+        <EditText
+            android:id="@+id/addressLine2"
+            style="@style/AddressStyle"
+            android:hint="@string/address_line2"
+            android:text="@={representativeViewModel.address.line2}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/search_title"
+            app:layout_constraintTop_toBottomOf="@+id/addressLine1" />
 
-            <EditText
-                android:id="@+id/addressLine2"
-                style="@style/AddressStyle"
-                android:hint="@string/address_line2"
-                android:text="@={address.line2}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/search_title"
-                app:layout_constraintTop_toBottomOf="@+id/addressLine1" />
+        <EditText
+            android:id="@+id/city"
+            style="@style/AddressStyle"
+            android:hint="@string/city"
+            android:text="@={representativeViewModel.address.city}"
+            app:layout_constraintEnd_toStartOf="@+id/stateSpinner"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addressLine2" />
 
-            <EditText
-                android:id="@+id/city"
-                style="@style/AddressStyle"
-                android:hint="@string/city"
-                android:text="@={address.city}"
-                app:layout_constraintEnd_toStartOf="@+id/stateSpinner"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addressLine2" />
+        <Spinner
+            android:id="@+id/stateSpinner"
+            style="@style/AddressStyle"
+            android:entries="@array/states"
+            app:layout_constraintBottom_toBottomOf="@+id/city"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/city"
+            app:layout_constraintTop_toTopOf="@+id/city"
+            app:stateValue="@{representativeViewModel.address.state}" />
 
-            <Spinner
-                android:id="@+id/stateSpinner"
-                style="@style/AddressStyle"
-                android:entries="@array/states"
-                app:layout_constraintBottom_toBottomOf="@+id/city"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/city"
-                app:layout_constraintTop_toTopOf="@+id/city"
-                app:stateValue="@{address.state}" />
+        <EditText
+            android:id="@+id/zip"
+            style="@style/AddressStyle"
+            android:hint="@string/zip"
+            android:text="@={representativeViewModel.address.zip}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/search_title"
+            app:layout_constraintTop_toBottomOf="@+id/city" />
 
-            <EditText
-                android:id="@+id/zip"
-                style="@style/AddressStyle"
-                android:hint="@string/zip"
-                android:text="@={address.zip}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/search_title"
-                app:layout_constraintTop_toBottomOf="@+id/city" />
+        <Button
+            android:id="@+id/buttonFindMyRepresentative"
+            style="@style/ButtonStyle"
+            android:text="@string/button_find_my_representative"
+            app:layout_constraintEnd_toEndOf="@+id/zip"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/zip" />
 
-            <Button
-                android:id="@+id/buttonFindMyRepresentative"
-                style="@style/ButtonStyle"
-                android:text="@string/button_find_my_representative"
-                app:layout_constraintEnd_toEndOf="@+id/zip"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/zip" />
-
-            <Button
-                android:id="@+id/buttonUseMyLocation"
-                style="@style/ButtonStyle"
-                android:text="@string/button_use_my_location"
-                app:layout_constraintEnd_toEndOf="@+id/zip"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonFindMyRepresentative" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/buttonUseMyLocation"
+            style="@style/ButtonStyle"
+            android:text="@string/button_use_my_location"
+            app:layout_constraintEnd_toEndOf="@+id/zip"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonFindMyRepresentative" />
 
         <ProgressBar
             android:id="@+id/progress"
@@ -115,27 +101,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonUseMyLocation" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list"
+        <include
+            android:id="@+id/recyclerViewRepresentatives"
+            layout="@layout/main_recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/searchLayout" />
-
-<!--        <include-->
-<!--            android:id="@+id/recyclerViewRepresentatives"-->
-<!--            layout="@layout/main_recycler_view"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/searchLayout"/>-->
+            app:layout_constraintTop_toBottomOf="@+id/buttonUseMyLocation" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 

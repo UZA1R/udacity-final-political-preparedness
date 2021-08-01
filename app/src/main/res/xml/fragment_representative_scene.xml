@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@+id/start" >
+        <OnSwipe app:touchAnchorId="@+id/recyclerViewRepresentatives" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+
+        <Constraint
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/search_title" />
+        <Constraint
+            app:layout_constraintStart_toStartOf="@+id/search_title"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addressLine1"
+            android:id="@+id/addressLine2" />
+        <Constraint
+            app:layout_constraintEnd_toStartOf="@+id/stateSpinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toBottomOf="@+id/addressLine2"
+            android:id="@+id/city" />
+        <Constraint
+            app:layout_constraintStart_toStartOf="@+id/search_title"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_title"
+            android:id="@+id/addressLine1" />
+        <Constraint
+            app:layout_constraintStart_toEndOf="@+id/city"
+            app:layout_constraintTop_toTopOf="@+id/city"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/stateSpinner" />
+        <Constraint
+            app:layout_constraintStart_toStartOf="@+id/search_title"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/city"
+            android:id="@+id/zip" />
+        <Constraint
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/search_title"
+            app:layout_constraintEnd_toEndOf="@+id/zip"
+            app:layout_constraintTop_toBottomOf="@+id/buttonFindMyRepresentative"
+            android:id="@+id/buttonUseMyLocation" />
+        <Constraint
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/search_title"
+            app:layout_constraintEnd_toEndOf="@+id/zip"
+            app:layout_constraintTop_toBottomOf="@id/zip"
+            android:id="@+id/buttonFindMyRepresentative" />
+    </ConstraintSet>
+
+</MotionScene>
