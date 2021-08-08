@@ -4,24 +4,24 @@ PolitcalPreparedness is an example application built to demonstrate core Android
 
 This app demonstrates the following views and techniques:
 
-* [Retrofit](https://square.github.io/retrofit/) to make api calls to an HTTP web service.
-* [Moshi](https://github.com/square/moshi) which handles the deserialization of the returned JSON to Kotlin data objects. 
-* [Glide](https://bumptech.github.io/glide/) to load and cache images by URL.
-* [Room](https://developer.android.com/training/data-storage/room) for local database storage.
+* [Retrofit] to make api calls to an HTTP web service.
+* [Moshi] which handles the deserialization of the returned JSON to Kotlin data objects. 
+* [Glide] to load and cache images by URL.
+* [Room] for local database storage.
   
 It leverages the following components from the Jetpack library:
 
-* [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
-* [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
-* [Data Binding](https://developer.android.com/topic/libraries/data-binding/) with binding adapters
-* [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) with the SafeArgs plugin for parameter passing between fragments
+* [ViewModel]
+* [LiveData]
+* [Data Binding] with binding adapters
+* [Navigation] with the SafeArgs plugin for parameter passing between fragments
 
 
 ## Setting up the Repository
 
 To get started with this project, simply pull the repository and import the project into Android Studio. From there, deploy the project to an emulator or device. 
 
-* NOTE: In order for this project to pull data, you will need to add your API Key to the project as a value in the CivicsHttpClient. You can generate an API Key from the [Google Developers Console](https://console.developers.google.com/)
+* NOTE: In order for this project to pull data, you will need to add your API Key to the project as a value in the CivicsHttpClient. You can generate an API Key from the [Google Developers Console]
 
 ## Getting Started
 
@@ -63,3 +63,15 @@ License
     See the License for the specific language governing permissions and
     limitations under the License.
 
+
+[Retrofit]: https://square.github.io/retrofit/
+[Moshi]: https://github.com/square/moshi/
+[Glide]: https://bumptech.github.io/glide/
+[Room]: https://developer.android.com/training/data-storage/room/
+
+[ViewModel]: https://developer.android.com/topic/libraries/architecture/viewmodel/
+[LiveData]: https://developer.android.com/topic/libraries/architecture/livedata/
+[Data Binding]: https://developer.android.com/topic/libraries/data-binding/
+[Navigation]: https://developer.android.com/topic/libraries/architecture/navigation/
+
+[Google Developers Console]: https://console.developers.google.com/
