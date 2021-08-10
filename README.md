@@ -17,9 +17,9 @@ It leverages the following components from the Jetpack library:
 * [Navigation] with the SafeArgs plugin for parameter passing between fragments
 
 ## Screens
-<img src="assets/screen1.png" width="300" height="300" />	<img src="assets/screen2.png" width="300" height="300" />
-<img src="assets/screen3.png" width="300" height="300" />	<img src="assets/screen4.png" width="300" height="300" />
-<img src="assets/screen5.png" width="300" height="300" />	<img src="assets/screen6.png" width="300" height="300" />
+<img src="assets/screen1.png" width="200" height="700" />	<img src="assets/screen2.png" width="200" height="700" />
+<img src="assets/screen3.png" width="200" height="700" />	<img src="assets/screen4.png" width="200" height="700" />
+<img src="assets/screen5.png" width="200" height="700" />	<img src="assets/screen6.png" width="200" height="700" />
 
 ## Setting up the Repository
 
