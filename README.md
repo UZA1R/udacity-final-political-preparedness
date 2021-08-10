@@ -18,8 +18,8 @@ It leverages the following components from the Jetpack library:
 
 ## Screens
 <img src="assets/screen1.png" width="428" height="926" />	<img src="assets/screen2.png" width="428" height="926" />
-<img src="assets/screen3.png" width="428" height="700" />	<img src="assets/screen4.png" width="428" height="926" />
-<img src="assets/screen5.png" width="428" height="700" />	<img src="assets/screen6.png" width="428" height="926" />
+<img src="assets/screen3.png" width="428" height="926" />	<img src="assets/screen4.png" width="428" height="926" />
+<img src="assets/screen5.png" width="428" height="926" />	<img src="assets/screen6.png" width="428" height="926" />
 
 ## Setting up the Repository
 
