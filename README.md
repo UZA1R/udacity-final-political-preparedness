@@ -16,6 +16,13 @@ It leverages the following components from the Jetpack library:
 * [Data Binding] with binding adapters
 * [Navigation] with the SafeArgs plugin for parameter passing between fragments
 
+## Screens
+![Screen1](assets/screen1)
+![Screen2](assets/screen2)
+![Screen3](assets/screen3)
+![Screen4](assets/screen4)
+![Screen5](assets/screen5)
+![Screen6](assets/screen6)
 
 ## Setting up the Repository
 
