@@ -80,9 +80,9 @@ License
 
 [Google Developers Console]: https://console.developers.google.com/
 
-img[alt=Screen1] { width: 200px; }
-img[alt=Screen2] { width: 200px; }
-img[alt=Screen3] { width: 200px; }
-img[alt=Screen4] { width: 200px; }
-img[alt=Screen5] { width: 200px; }
-img[alt=Screen6] { width: 200px; }
+img[alt=Screen1] { width: 100px; }
+img[alt=Screen2] { width: 100px; }
+img[alt=Screen3] { width: 100px; }
+img[alt=Screen4] { width: 100px; }
+img[alt=Screen5] { width: 100px; }
+img[alt=Screen6] { width: 100px; }
