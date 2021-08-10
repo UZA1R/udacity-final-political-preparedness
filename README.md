@@ -17,9 +17,12 @@ It leverages the following components from the Jetpack library:
 * [Navigation] with the SafeArgs plugin for parameter passing between fragments
 
 ## Screens
-![Screen1](assets/screen1.png)	![Screen2](assets/screen2.png)
-![Screen3](assets/screen3.png)	![Screen4](assets/screen4.png)
-![Screen5](assets/screen5.png)	![Screen6](assets/screen6.png)
+<img src="assets/screen1.png" width="200" height="200" />
+<img src="assets/screen2.png" width="200" height="200" />
+<img src="assets/screen3.png" width="200" height="200" />
+<img src="assets/screen4.png" width="200" height="200" />
+<img src="assets/screen5.png" width="200" height="200" />
+<img src="assets/screen6.png" width="200" height="200" />
 
 ## Setting up the Repository
 
@@ -79,10 +82,3 @@ License
 [Navigation]: https://developer.android.com/topic/libraries/architecture/navigation/
 
 [Google Developers Console]: https://console.developers.google.com/
-
-img[alt=Screen1] { width: 100px; }
-img[alt=Screen2] { width: 100px; }
-img[alt=Screen3] { width: 100px; }
-img[alt=Screen4] { width: 100px; }
-img[alt=Screen5] { width: 100px; }
-img[alt=Screen6] { width: 100px; }
